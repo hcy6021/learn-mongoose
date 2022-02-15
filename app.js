@@ -1,10 +1,10 @@
 const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
-const nunjucks = require("nonjucks");
+const nunjucks = require("nunjucks");
 
 const connect = require("./schemas");
-const indexRouter = require("./routes");
+const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const commentsRouter = require("./routes/comments");
 
@@ -20,7 +20,7 @@ connect();
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
-app.juse(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
@@ -40,5 +40,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(app.get("port"), () => {
-  console.log.apply(app.get("port"), "빈 포트에서 대기 중");
+  console.log(app.get("port"), "번 포트에서 대기 중");
 });
