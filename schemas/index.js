@@ -8,8 +8,6 @@ const connect = () => {
     "mongodb://root:ekqlek8130@localhost:27017/admin",
     {
       dbName: "nodejs",
-      useNewUrlParser: true,
-      useCreateIndex: true,
     },
     (error) => {
       if (error) {
@@ -24,7 +22,6 @@ const connect = () => {
 mongoose.connection.on("error", (error) => {
   console.error("몽고디비 연결 에러", error);
 });
-
 mongoose.connection.on("disconnected", () => {
   console.error("몽고디비 연결이 끊겼습니다. 연결을 재시도합니다.");
   connect();
