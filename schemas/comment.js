@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 const {
-  Type: { ObjectId },
+  Types: { ObjectId },
 } = Schema;
 const commentSchema = new Schema({
   commenter: {
